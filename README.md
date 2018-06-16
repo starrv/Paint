@@ -1,2 +1,1 @@
-# PaintApplication
-Graphics editor
+-A graphics editor-
