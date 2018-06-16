@@ -1,0 +1,125 @@
+package letspaintapplet;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+public class FontStyle extends JPanel
+{
+	private Whiteboard w;
+	private JCheckBox plainCheckBox, boldCheckBox, italicsCheckBox;
+	private String[] JLabels;
+	private JLabel label;
+	
+	
+	public FontStyle(Whiteboard w)
+	{
+		this.w=w;
+		setBackground(Color.pink);
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		label=new JLabel("Font Style: ");
+		//add(label);
+		plainCheckBox=new JCheckBox("regular", true);
+		plainCheckBox.setBackground(Color.black);
+		plainCheckBox.setForeground(Color.white);
+		plainCheckBox.addItemListener(new regularItemListener());
+		add(plainCheckBox);
+		boldCheckBox=new JCheckBox("bold", false);
+		boldCheckBox.setBackground(Color.black);
+		boldCheckBox.setForeground(Color.white);
+		boldCheckBox.addItemListener(new boldItemListener());
+		add(boldCheckBox);
+		italicsCheckBox=new JCheckBox("italics", false);
+		italicsCheckBox.setBackground(Color.black);
+		italicsCheckBox.setForeground(Color.white);
+		italicsCheckBox.addItemListener(new italicsItemListener());
+		add(italicsCheckBox);
+		//w.setFontStyle(Font.PLAIN);
+	}
+	
+	/*private void addButtons()
+	{
+		String[] JButtonLabels={"regular", "bold", "italics"};
+		JButtonBox=new JButton[JButtonLabels.length];
+		for(int i=0; i<JButtonBox.length; i++)
+		{
+			System.out.println("Add button "+i);
+			JButtonBox[i]=new JButton(JButtonLabels[i]);
+			JButtonBox[i].setBackground(Color.black);
+			JButtonBox[i].setForeground(Color.white);
+			JButtonBox[i].addActionListener(this);
+			add(JButtonBox[i]);		
+		}
+	}*/
+	
+
+/*
+	@Override
+	public void actionPerformed(ActionEvent event) 
+	{
+		// TODO Auto-generated method stub
+		if(event.getActionCommand().equals("regular"))
+		{
+			w.setFontStyle(Font.PLAIN);
+		}
+		else if(event.getActionCommand().equals("bold"))
+		{
+			w.setFontStyle(Font.BOLD);
+		}
+		else if(event.getActionCommand().equals("italics"))
+		{
+			w.setFontStyle(Font.ITALIC);
+		}
+	}*/
+	private class regularItemListener implements ItemListener
+	{
+		@Override
+		public void itemStateChanged(ItemEvent event) 
+		{
+			// TODO Auto-generated method stub
+			if(event.getStateChange()==ItemEvent.SELECTED)
+			{
+				w.setFontStyle(Font.PLAIN);
+			}
+			else if(event.getStateChange()==ItemEvent.DESELECTED)
+			{
+				w.unSetFontStyle(Font.PLAIN);
+			}
+		}
+	}
+	
+	private class boldItemListener implements ItemListener
+	{
+		@Override
+		public void itemStateChanged(ItemEvent event) 
+		{
+			// TODO Auto-generated method stub
+			if(event.getStateChange()==ItemEvent.SELECTED)
+			{
+				w.setFontStyle(Font.BOLD);
+			}
+			else if(event.getStateChange()==ItemEvent.DESELECTED)
+			{
+				w.unSetFontStyle(Font.BOLD);
+			}
+		}
+	}
+	
+	private class italicsItemListener implements ItemListener
+	{
+		@Override
+		public void itemStateChanged(ItemEvent event) 
+		{
+			// TODO Auto-generated method stub
+			if(event.getStateChange()==ItemEvent.SELECTED)
+			{
+				w.setFontStyle(Font.ITALIC);
+			}
+			else if(event.getStateChange()==ItemEvent.DESELECTED)
+			{
+				w.unSetFontStyle(Font.ITALIC);
+			}
+		}
+	}
+}
