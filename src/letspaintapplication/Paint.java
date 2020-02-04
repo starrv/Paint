@@ -1,7 +1,7 @@
 package letspaintapplication;
 
 
-public class mainDisplay {
+public class Paint {
 
 	public static void main(String[] args) 
 	{

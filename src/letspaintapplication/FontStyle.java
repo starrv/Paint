@@ -18,24 +18,19 @@ public class FontStyle extends JPanel
 	public FontStyle(Whiteboard w)
 	{
 		this.w=w;
-		setBackground(Color.pink);
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		//add(label);
 		plainCheckBox=new JCheckBox("regular", true);
-		plainCheckBox.setBackground(Color.black);
-		plainCheckBox.setForeground(Color.white);
 		plainCheckBox.addItemListener(new regularItemListener());
 		add(plainCheckBox);
 		boldCheckBox=new JCheckBox("bold", false);
-		boldCheckBox.setBackground(Color.black);
-		boldCheckBox.setForeground(Color.white);
 		boldCheckBox.addItemListener(new boldItemListener());
 		add(boldCheckBox);
 		italicsCheckBox=new JCheckBox("italics", false);
-		italicsCheckBox.setBackground(Color.black);
-		italicsCheckBox.setForeground(Color.white);
 		italicsCheckBox.addItemListener(new italicsItemListener());
 		add(italicsCheckBox);
+		setOpaque(true);
+		setBackground(Color.pink);
 		//w.setFontStyle(Font.PLAIN);
 	}
 	

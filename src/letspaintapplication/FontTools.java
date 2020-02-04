@@ -24,82 +24,84 @@ public class FontTools extends JPanel implements ActionListener, MouseMotionList
 		addMouseMotionListener(this);
 		setLayout(new GridLayout(0,1));
 		this.w=w;
-		setBackground(Color.pink);
 		title=new JLabel("Font Colors:");
-		title.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		title.setFont(new Font("Sans Serif", Font.BOLD, 20));
 		add(title);
+		setOpaque(true);
+		setBackground(Color.white);
+		
 		orange=new JButton("orange");
-		orange.setBackground(Color.black);
-		orange.setForeground(Color.white);
 	    orange.addActionListener(this);
 	    orange.addKeyListener(this);
+	    orange.setOpaque(true);
+	    
 	    blue=new JButton("blue");
-	    blue.setBackground(Color.black);
-		blue.setForeground(Color.white);
 	    blue.addActionListener(this);
 	    blue.addKeyListener(this);
+	    blue.setOpaque(true);
+	    
 	    black=new JButton("black");
-	    black.setBackground(Color.black);
-		black.setForeground(Color.white);
 	    black.addActionListener(this);
-	    black.addActionListener(this);
+	    black.addKeyListener(this);
+	    black.setOpaque(true);
+	    
 		green=new JButton("green");
-		green.setBackground(Color.black);
-		green.setForeground(Color.white);
 	    green.addActionListener(this);
 	    green.addKeyListener(this);
+	    green.setOpaque(true);
+	    
 	    yellow=new JButton("yellow");
-	    yellow.setBackground(Color.black);
-		yellow.setForeground(Color.white);
 	    yellow.addActionListener(this);
 	    yellow.addKeyListener(this);
+	    yellow.setOpaque(true);
+	    
 	    white=new JButton("white");
-		white.setBackground(Color.black);
-		white.setForeground(Color.white);
 	    white.addActionListener(this);
 	    white.addKeyListener(this);
+	    white.setOpaque(true);
+	    
 	    red=new JButton("red");
-		red.setBackground(Color.black);
-		red.setForeground(Color.white);
 	    red.addActionListener(this);
 	    red.addKeyListener(this);
+	    red.setOpaque(true);
+	    
 	    darkGray=new JButton("dark gray");
-		darkGray.setBackground(Color.black);
-		darkGray.setForeground(Color.white);
 	    darkGray.addActionListener(this);
 	    darkGray.addKeyListener(this);
+	    darkGray.setOpaque(true);
+	    
 	    lightGray=new JButton("light gray");
-		lightGray.setBackground(Color.black);
-		lightGray.setForeground(Color.white);
 	    lightGray.addActionListener(this);
 	    lightGray.addKeyListener(this);
+	    lightGray.setOpaque(true);
+	    
 	    pink=new JButton("pink");
-		pink.setBackground(Color.black);
-		pink.setForeground(Color.white);
 	    pink.addActionListener(this);
 	    pink.addKeyListener(this);
+	    pink.setOpaque(true);
+	    
 	    magenta=new JButton("magenta");
-		magenta.setBackground(Color.black);
-		magenta.setForeground(Color.white);
 	    magenta.addActionListener(this);
 	    magenta.addKeyListener(this);
+	    magenta.setOpaque(true);
+	    
 	    cyan=new JButton("cyan");
-		cyan.setBackground(Color.black);
-		cyan.setForeground(Color.white);
 	    cyan.addActionListener(this);
 	    cyan.addKeyListener(this);
+	    cyan.setOpaque(true);
+	    
 	    chocolate=new Color(125,30,45,50);
 	    chocolate1=new JButton("chocolate");
-	    chocolate1.setBackground(Color.black);
-	    chocolate1.setForeground(Color.white);
 	    chocolate1.addActionListener(this);
 	    chocolate1.addKeyListener(this);
+	    chocolate1.setOpaque(true);
+	    
 	    peach=new Color(25,100,95,25);
 	    peach1=new JButton("peach");
-	    peach1.setBackground(Color.black);
-	    peach1.setForeground(Color.white);
 	    peach1.addActionListener(this);
 	    peach1.addKeyListener(this);
+	    peach1.setOpaque(true);
+	    
 	    add(green);
 	    add(yellow);
 	    add(orange);
@@ -115,6 +117,7 @@ public class FontTools extends JPanel implements ActionListener, MouseMotionList
 	    add(chocolate1);
 	    add(peach1);
 	    buttonSelected=black;
+	    buttonSelected.setBackground(Color.black);
 	    setVisible(true);  
 	}
 	
@@ -130,161 +133,102 @@ public class FontTools extends JPanel implements ActionListener, MouseMotionList
 		// TODO Auto-generated method stub
 		if(event.getActionCommand()=="green")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.green);
 			buttonSelected=green;
 			green.setBackground(Color.green);
-		
 		}
 		else if(event.getActionCommand()=="yellow")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.yellow);
 			buttonSelected=yellow;
-			yellow.setBackground(Color.yellow);			
+			yellow.setBackground(Color.yellow);	
 		}
-		if(event.getActionCommand()=="orange")
+		else if(event.getActionCommand()=="orange")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.orange);
 			buttonSelected=orange;
 			orange.setBackground(Color.orange);
 		}
 		else if(event.getActionCommand()=="blue")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.blue);
 			buttonSelected=blue;
 			blue.setBackground(Color.blue);
 			
 		}
-		if(event.getActionCommand()=="black")
+		else if(event.getActionCommand()=="black")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.black);
 			buttonSelected=black;
 			black.setBackground(Color.black);
 		}
-		if(event.getActionCommand()=="light gray")
+		else if(event.getActionCommand()=="light gray")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.lightGray);
 			buttonSelected=lightGray;
 			lightGray.setBackground(Color.lightGray);
 		}
-		if(event.getActionCommand()=="dark gray")
+		else if(event.getActionCommand()=="dark gray")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.darkGray);
 			buttonSelected=darkGray;
 			darkGray.setBackground(Color.darkGray);
 		}
-		if(event.getActionCommand()=="red")
+		else if(event.getActionCommand()=="red")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.red);
 			buttonSelected=red;
 			red.setBackground(Color.red);
 		}
-		if(event.getActionCommand()=="pink")
+		else if(event.getActionCommand()=="pink")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.pink);
 			buttonSelected=pink;
 			pink.setBackground(Color.pink);
 		}
-		if(event.getActionCommand()=="magenta")
+		else if(event.getActionCommand()=="magenta")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.magenta);
 			buttonSelected=magenta;
 			magenta.setBackground(Color.magenta);
 		}
-		if(event.getActionCommand()=="cyan")
+		else if(event.getActionCommand()=="cyan")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.cyan);
 			buttonSelected=cyan;
 			cyan.setBackground(Color.cyan);
 		}
-		if(event.getActionCommand()=="white")
+		else if(event.getActionCommand()=="white")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(Color.white);
 			buttonSelected=white;
 			white.setBackground(Color.white);
-			white.setForeground(Color.black);
 		}		
-		if(event.getActionCommand()=="chocolate")
+		else if(event.getActionCommand()=="chocolate")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(chocolate);
 			buttonSelected=chocolate1;
-			buttonSelected.setBackground(chocolate);
-			buttonSelected.setText("chocolate");
+			chocolate1.setBackground(chocolate);
 		}
-		if(event.getActionCommand()=="peach")
+		else if(event.getActionCommand()=="peach")
 		{
-			buttonSelected.setBackground(Color.black);
-			if(buttonSelected.equals(white))
-			{
-				buttonSelected.setForeground(Color.white);
-			}
+			buttonSelected.setBackground(new Color(238,238,238));	
 			w.setFontColor(peach);
 			buttonSelected=peach1;
-			buttonSelected.setBackground(peach);
+			peach1.setBackground(peach);
 		}
 	}
 	
@@ -310,11 +254,7 @@ public class FontTools extends JPanel implements ActionListener, MouseMotionList
 		{
 			if(event.getComponent().equals(green))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.green);
 				buttonSelected=green;
 				green.setBackground(Color.green);
@@ -322,149 +262,95 @@ public class FontTools extends JPanel implements ActionListener, MouseMotionList
 			}
 			else if(event.getComponent().equals(yellow))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.yellow);
 				buttonSelected=yellow;
-				yellow.setBackground(Color.yellow);			
+				yellow.setBackground(Color.yellow);		
 			}
-			if(event.getComponent().equals(orange))
+			else if(event.getComponent().equals(orange))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.orange);
 				buttonSelected=orange;
 				orange.setBackground(Color.orange);
 			}
 			else if(event.getComponent().equals(blue))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.blue);
 				buttonSelected=blue;
 				blue.setBackground(Color.blue);
 				
 			}
-			if(event.getComponent().equals(black))
+			else if(event.getComponent().equals(black))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.black);
 				buttonSelected=black;
 				black.setBackground(Color.black);
 			}
-			if(event.getComponent().equals(lightGray))
+			else if(event.getComponent().equals(lightGray))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.lightGray);
 				buttonSelected=lightGray;
 				lightGray.setBackground(Color.lightGray);
 			}
-			if(event.getComponent().equals(darkGray))
+			else if(event.getComponent().equals(darkGray))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.darkGray);
 				buttonSelected=darkGray;
 				darkGray.setBackground(Color.darkGray);
 			}
-			if(event.getComponent().equals(red))
+			else if(event.getComponent().equals(red))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.red);
 				buttonSelected=red;
 				red.setBackground(Color.red);
 			}
-			if(event.getComponent().equals(pink))
+			else if(event.getComponent().equals(pink))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.pink);
 				buttonSelected=pink;
 				pink.setBackground(Color.pink);
 			}
-			if(event.getComponent().equals(magenta))
+			else if(event.getComponent().equals(magenta))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.magenta);
 				buttonSelected=magenta;
 				magenta.setBackground(Color.magenta);
 			}
-			if(event.getComponent().equals(cyan))
+			else if(event.getComponent().equals(cyan))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.cyan);
 				buttonSelected=cyan;
 				cyan.setBackground(Color.cyan);
 			}
-			if(event.getComponent().equals(white))
+			else if(event.getComponent().equals(white))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(Color.white);
 				buttonSelected=white;
 				white.setBackground(Color.white);
-				white.setForeground(Color.black);
 			}		
-			if(event.getComponent().equals(chocolate))
+			else if(event.getComponent().equals(chocolate1))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(chocolate);
 				buttonSelected=chocolate1;
-				buttonSelected.setBackground(chocolate);
-				buttonSelected.setText("chocolate");
+				chocolate1.setBackground(chocolate);
 			}
-			if(event.getComponent().equals(peach))
+			else if(event.getComponent().equals(peach1))
 			{
-				buttonSelected.setBackground(Color.black);
-				if(buttonSelected.equals(white))
-				{
-					buttonSelected.setForeground(Color.white);
-				}
+				buttonSelected.setBackground(new Color(238,238,238));	
 				w.setFontColor(peach);
 				buttonSelected=peach1;
-				buttonSelected.setBackground(peach);
+				peach1.setBackground(peach);
 			}
 		}
 	}

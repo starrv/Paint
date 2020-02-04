@@ -24,14 +24,13 @@ public class FontType extends JPanel implements ItemListener
 		//label=new JLabel("Font Family: ");
 		//label.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		//add(label);
-		setBackground(Color.black);
 		String[] JButtonLabels={"arial", "times new roman", "comic sans ms", "sans serif", "calibri", "verdana"};
 		fonts=new JComboBox<String>(JButtonLabels);
-		fonts.setBackground(Color.black);
-		fonts.setForeground(Color.white);
 		fonts.addItemListener(this)	;	
-		fonts.setSelectedIndex(2);
+		fonts.setSelectedIndex(0);
 		add(fonts);
+		setOpaque(true);
+		setBackground(Color.pink);
 	}
 	/*
 	private void addButtons()

@@ -22,19 +22,18 @@ public class FontSize extends JPanel implements ItemListener
 	public FontSize(Whiteboard w)
 	{
 		this.w=w;
-		setBackground(Color.pink);
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		label=new JLabel("Font Size: ");
-		label.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+		label.setFont(new Font("Sans Serif", Font.BOLD, 14));
 		//add(label);
 		addLabels();
 		fontSizeList=new JComboBox<String>(JLabels);
-		fontSizeList.setBackground(Color.black);
-		fontSizeList.setForeground(Color.white);
 		fontSizeList.addItemListener(this);
 		fontSizeList.setSelectedIndex(2);
 		add(fontSizeList);
 		w.setFontSize(Integer.parseInt(JLabels[2]));
+		setOpaque(true);
+		setBackground(Color.pink);
 		//addButtons();
 		//buttonSelected=JButtonBox[1];
 		//Functions.Functions.printMessage(JButtonBox[1]);

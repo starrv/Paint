@@ -31,10 +31,11 @@ public class Display extends JFrame implements WindowListener
 	{
 		//setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		setSize(width, height);
-		setTitle("Let's Paint Application");
+		setTitle("Paint");
 		URL url = getResource("PaintIcon.png");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(url));
 		setLayout(new BorderLayout());
+		setFont(new Font("Sans Serif", Font.BOLD, 20));
 		whiteboard=new Whiteboard();
 		whiteboard.setBorder(new LineBorder(Color.black));
 		add(whiteboard, BorderLayout.CENTER);
@@ -46,8 +47,10 @@ public class Display extends JFrame implements WindowListener
 		add(drawTools,BorderLayout.WEST);
 		Cursors cursors=new Cursors(whiteboard);
 		add(cursors,BorderLayout.SOUTH);
+		setBackground(Color.pink);
 		setVisible(true);
-		addWindowListener(this);//this.setIgnoreRepaint(true);
+		addWindowListener(this);
+		whiteboard.eraseAll();//this.setIgnoreRepaint(true);
 		//Functions.Functions.printMessage(whiteboard.getIgnoreRepaint()+" to ignore repaint");
 		//playMusic();
 	}
@@ -88,12 +91,14 @@ public class Display extends JFrame implements WindowListener
 	{
 		// TODO Auto-generated method stub
 		stopMusic();
+		System.exit(0);
 		//JOptionPane.showMessageDialog(this, "music stopped");
 	}
 	@Override
 	public void windowClosing(WindowEvent arg0) {
 		// TODO Auto-generated method stub
 		stopMusic();
+		System.exit(0);
 		//JOptionPane.showMessageDialog(this, "music stopped");
 	}
 	@Override

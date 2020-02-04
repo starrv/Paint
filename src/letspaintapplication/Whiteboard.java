@@ -21,7 +21,7 @@ public class Whiteboard extends SimpleWhiteboard {
   
   public Whiteboard() {
     super();
-    Font font = new Font("Serif", Font.BOLD, 20);
+    Font font = new Font("Sans Serif", Font.BOLD, 20);
     setFont(font);
     fm = getFontMetrics(font);
     //addKeyListener(new CharDrawer());
@@ -29,8 +29,11 @@ public class Whiteboard extends SimpleWhiteboard {
   
   public Whiteboard(int w, int h)
   {
-	  this();
-	  setSize(w,h);
+	  super(w,h);
+	  Font font = new Font("Sans Serif", Font.BOLD, 20);
+	  setFont(font);
+	  fm = getFontMetrics(font);
+	  //addKeyListener(new CharDrawer());
   }
 
  

@@ -33,7 +33,6 @@ public class Open_SavePanel extends JPanel implements ActionListener
 	public Open_SavePanel(Whiteboard w, PlainPanel panel)
 	{
 		this.w=w;
-		setBackground(Color.black);
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		addButtons();
 		this.panel=panel;
@@ -46,15 +45,6 @@ public class Open_SavePanel extends JPanel implements ActionListener
 		for(int i=0; i<labels.length;i++)
 		{
 			JButtonBox[i]=new JButton(labels[i]);
-			if(i==labels.length-1 || i==labels.length-2)
-			{
-				JButtonBox[i].setBackground(Color.white);
-			}
-			else
-			{
-				JButtonBox[i].setBackground(Color.black);
-				JButtonBox[i].setForeground(Color.white);
-			}
 			JButtonBox[i].addActionListener(this);
 			add(JButtonBox[i]);
 		}
@@ -133,9 +123,9 @@ public class Open_SavePanel extends JPanel implements ActionListener
 	    if(returnVal == JFileChooser.APPROVE_OPTION) 
 	    {
 	    	File file = chooser.getSelectedFile();
-	    	if(isJPGFile(file.getName())!=true)
+	    	if(isJPGFile(removeWhiteSpace(file.getName()))!=true)
 	    	{
-	    		String fileName=file.getPath()+".jpg";
+	    		String fileName=removeWhiteSpace(file.getPath())+".jpg";
 		    	file=new File(fileName);
 	    	}
 	    	int answer=0;
@@ -182,27 +172,46 @@ public class Open_SavePanel extends JPanel implements ActionListener
 	    	}
 	    }
 	}
+	
+	private String removeWhiteSpace(String fileName)
+	{
+		String newFileName="";
+		char curr;
+		for(int i=0; i<fileName.length(); i++)
+		{
+			curr=fileName.charAt(i);
+			if(curr==' ')
+			{
+				continue;
+			}
+			newFileName+=curr;
+		}
+		return newFileName;
+	}
+	
 	private boolean isJPGFile(String fileName)
 	{
+		System.out.println("File name:"+fileName);
 		StringTokenizer tokenizer=new StringTokenizer(fileName,".");
 		String extension="";
 		while(tokenizer.hasMoreTokens())
 		{
 			extension=tokenizer.nextToken();
+			//System.out.println("extension: "+extension);
 		}
 		/*for(int i=fileName.length()-4; i<fileName.length(); i++)
 		{
 			extension +=fileName.charAt(i);
 		}*/
 		//JOptionPane.showMessageDialog(null,"Extension of "+fileName+" is "+extension);
-		if(extension.equalsIgnoreCase(".jpg"))
+		if(extension.equalsIgnoreCase("jpg"))
 		{
-		//	JOptionPane.showMessageDialog(null,fileName+ " is JPG file");
+			//System.out.println(fileName+ " is a JPG file because '"+extension+"' is equal to 'jpg'");
 			return true;
 		}
 		else
 		{
-		//	JOptionPane.showMessageDialog(null,fileName+" is not JPG file");
+			//System.out.println(fileName+ " is not a JPG file because '"+extension+"' is not equal to 'jpg'");
 			return false;
 		}
 	}

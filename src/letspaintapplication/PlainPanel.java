@@ -25,19 +25,21 @@ public class PlainPanel extends JPanel
 		toolBar=new JToolBar("Tools");
 		firstLabel=new JLabel("File Name:");
 		firstLabel.setFont(new Font("Sans Serif", Font.BOLD, 20));
+		firstLabel.setOpaque(true);
+		firstLabel.setBackground(Color.pink);
 		toolBar.add(firstLabel);
 		label=new JLabel(DEFAULT_DOCUMENT_LABEL);
 		label.setFont(new Font("Sans Serif", Font.BOLD, 14));
 		label.setAlignmentX(CENTER_ALIGNMENT);
 		label.setOpaque(true);
-		label.setBackground(Color.black);
-		label.setForeground(Color.white);
+		label.setBackground(Color.pink);
 		toolBar.add(label);
 		toolBar.add(new FontType(w));
 		toolBar.add(new FontSize(w));
 		toolBar.add(new FontStyle(w));
 		toolBar.add(new Open_SavePanel(w, this));
 		toolBar.addSeparator();
+		toolBar.setBackground(Color.pink);
 		add(toolBar);
 		add(new JLabel());
 	}

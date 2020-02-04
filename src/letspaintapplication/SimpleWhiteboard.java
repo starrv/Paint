@@ -39,7 +39,7 @@ public class SimpleWhiteboard extends JPanel implements MouseListener, MouseMoti
   
   public SimpleWhiteboard() 
   {
-	this.setName("Let's Paint");
+	setName("Let's Paint");
 	imageWidth=1350;
 	imageHeight=1350;
 	cursor=new Cursor(Cursor.DEFAULT_CURSOR);
@@ -53,7 +53,7 @@ public class SimpleWhiteboard extends JPanel implements MouseListener, MouseMoti
     addMouseListener(this);
     addMouseMotionListener(this);
     addKeyListener(this);
-   // setVisible(true);
+    setVisible(true);
     fontFamily="Comic Sans MS";
     fontStyle=Font.PLAIN;
     buttonSelected="pointer";
