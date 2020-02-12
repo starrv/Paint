@@ -19,8 +19,6 @@ public class Display extends JFrame implements WindowListener
 	private static final long serialVersionUID = 5657371353338627325L;
 	private static Whiteboard whiteboard;
 	private static Clip clip;
-	private int width=1350;
-	private int height=500;
 	
 	private URL getResource(String file)
 	{
@@ -29,14 +27,15 @@ public class Display extends JFrame implements WindowListener
 	
 	public Display()
 	{
-		//setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		setSize(width, height);
+		setName("Paint");
 		setTitle("Paint");
+		Dimension size=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(size.width,size.height);
 		URL url = getResource("PaintIcon.png");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(url));
 		setLayout(new BorderLayout());
 		setFont(new Font("Sans Serif", Font.BOLD, 20));
-		whiteboard=new Whiteboard();
+		whiteboard=new Whiteboard(getWidth(),getHeight());
 		whiteboard.setBorder(new LineBorder(Color.black));
 		add(whiteboard, BorderLayout.CENTER);
 		FontTools fontTools=new FontTools(whiteboard);

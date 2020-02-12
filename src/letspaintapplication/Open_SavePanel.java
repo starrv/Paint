@@ -91,30 +91,39 @@ public class Open_SavePanel extends JPanel implements ActionListener
 		}
 		else if(event.getActionCommand().equals("print"))
 		{
-			PrinterJob pj=PrinterJob.getPrinterJob();
-			//PageFormat pf = pj.pageDialog(pj.defaultPage());
-			//pj.defaultPage(pf);
-			//
-			    if (pj.printDialog())
-			    {
-			        try {pj.print();}
-			        catch (PrinterException exc) {
-			            JOptionPane.showMessageDialog(findParentFrame(), "Print error.  Error Message: "+exc);
-			         }
-			     }      
-		}
-		
+			print();
+		}	
 		else if(event.getActionCommand().equals("undo"))
 		{
 			w.undo();
 		}
 	}
 	
+	private void print()
+	{
+
+		PrinterJob pj=PrinterJob.getPrinterJob();
+		//PageFormat pf = pj.pageDialog(pj.defaultPage());
+		//pj.defaultPage(pf);
+		//
+		if (pj.printDialog())
+		{
+			try 
+			{
+				pj.print();
+			}
+			catch (PrinterException exc) 
+			{
+				JOptionPane.showMessageDialog(findParentFrame(), "Print error.  Error Message: "+exc);
+			}
+		}     
+	}
+	
 	private void saveAs()
 	{
-		JFileChooser chooser = new JFileChooser();
+		JFileChooser chooser = new JFileChooser(saveFile);
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	        "JPG Images", "jpg");
+	        "JPG & GIF & PNG Images","jpg","jpeg","gif","png");
 	    chooser.setFileFilter(filter);
 	    chooser.setAcceptAllFileFilterUsed(false);
 	    chooser.setFileHidingEnabled(true);
@@ -123,9 +132,10 @@ public class Open_SavePanel extends JPanel implements ActionListener
 	    if(returnVal == JFileChooser.APPROVE_OPTION) 
 	    {
 	    	File file = chooser.getSelectedFile();
-	    	if(isJPGFile(removeWhiteSpace(file.getName()))!=true)
+	    	file=new File(removeWhiteSpace(file.getPath()));
+	    	if(!isImageFile(file.getName()))
 	    	{
-	    		String fileName=removeWhiteSpace(file.getPath())+".jpg";
+	    		String fileName=file.getPath()+".jpg";
 		    	file=new File(fileName);
 	    	}
 	    	int answer=0;
@@ -137,15 +147,15 @@ public class Open_SavePanel extends JPanel implements ActionListener
 		    	BufferedImage image = w.getImage();
 		    	try 
 		    	{
-		    	   ImageIO.write(image, "jpg", file);  // ignore returned boolean
+		    	   ImageIO.write(image, getExtension(file.getPath()), file);  // ignore returned boolean
 		    	   JOptionPane.showMessageDialog(findParentFrame(), "File saved");
 		    	} catch(IOException e) 
 		    	{
-		    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + file.getPath()+".");
+		    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + file.getPath());
 		    	}
 		    	catch(IllegalArgumentException e) 
 		    	{
-		    	 JOptionPane.showMessageDialog(findParentFrame(), "Nothing to save thus far " + file.getPath()+".");
+		    	 JOptionPane.showMessageDialog(findParentFrame(), "Nothing to save thus far " + file.getPath());
 		    	}
 		    }
 	    	else{
@@ -158,11 +168,11 @@ public class Open_SavePanel extends JPanel implements ActionListener
 			    	BufferedImage image = w.getImage();
 			    	try 
 			    	{
-			    	   ImageIO.write(image, "jpg", file);  // ignore returned boolean
+			    	   ImageIO.write(image, getExtension(file.getPath()), file);  // ignore returned boolean
 			    	   JOptionPane.showMessageDialog(findParentFrame(), "File saved");
 			    	} catch(IOException e) 
 			    	{
-			    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + file.getPath()+".");
+			    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + file.getPath());
 			    	}
 		    	}
 		    	else
@@ -189,7 +199,7 @@ public class Open_SavePanel extends JPanel implements ActionListener
 		return newFileName;
 	}
 	
-	private boolean isJPGFile(String fileName)
+	private boolean isImageFile(String fileName)
 	{
 		System.out.println("File name:"+fileName);
 		StringTokenizer tokenizer=new StringTokenizer(fileName,".");
@@ -204,7 +214,7 @@ public class Open_SavePanel extends JPanel implements ActionListener
 			extension +=fileName.charAt(i);
 		}*/
 		//JOptionPane.showMessageDialog(null,"Extension of "+fileName+" is "+extension);
-		if(extension.equalsIgnoreCase("jpg"))
+		if(extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("jpeg") || extension.equalsIgnoreCase("png") || extension.equalsIgnoreCase("gif"))
 		{
 			//System.out.println(fileName+ " is a JPG file because '"+extension+"' is equal to 'jpg'");
 			return true;
@@ -216,11 +226,29 @@ public class Open_SavePanel extends JPanel implements ActionListener
 		}
 	}
 	
+	private String getExtension(String fileName)
+	{
+		System.out.println("File name:"+fileName);
+		StringTokenizer tokenizer=new StringTokenizer(fileName,".");
+		String extension="";
+		while(tokenizer.hasMoreTokens())
+		{
+			extension=tokenizer.nextToken();
+			//System.out.println("extension: "+extension);
+		}
+		/*for(int i=fileName.length()-4; i<fileName.length(); i++)
+		{
+			extension +=fileName.charAt(i);
+		}*/
+		//JOptionPane.showMessageDialog(null,"Extension of "+fileName+" is "+extension);
+		return extension;
+	}
+	
 	private void delete()
 	{
-		JFileChooser chooser = new JFileChooser();
+		JFileChooser chooser = new JFileChooser(saveFile);
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	        "JPG Images", "jpg");
+	        "JPG & PNG & GIF Images", "jpg","jpeg","png","gif");
 	    chooser.setFileFilter(filter);
 	    chooser.setAcceptAllFileFilterUsed(false);
 	    chooser.setFileHidingEnabled(true);
@@ -246,11 +274,11 @@ public class Open_SavePanel extends JPanel implements ActionListener
 			BufferedImage image = w.getImage();
 	    	try 
 	    	{
-	    	   ImageIO.write(image, "gif", saveFile);  // ignore returned boolean
+	    	   ImageIO.write(image, getExtension(saveFile.getPath()), saveFile);  // ignore returned boolean
 	    	   JOptionPane.showMessageDialog(findParentFrame(), "File saved");
 	    	} catch(IOException e) 
 	    	{
-	    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + saveFile.getPath()+".");
+	    	 JOptionPane.showMessageDialog(findParentFrame(), "Write error for " + saveFile.getPath());
 	    	}
 		}
 		else
@@ -261,9 +289,9 @@ public class Open_SavePanel extends JPanel implements ActionListener
 
 	private void openFile()
 	{
-		JFileChooser chooser = new JFileChooser();
+		JFileChooser chooser = new JFileChooser(saveFile);
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	        "JPG & GIF Images", "jpg", "gif");
+	        "JPG & PNG & GIF Images", "jpg", "gif","png","jpeg");
 	    chooser.setFileFilter(filter);
 	    chooser.setAcceptAllFileFilterUsed(false);
 	    int returnVal = chooser.showOpenDialog(findParentFrame());
